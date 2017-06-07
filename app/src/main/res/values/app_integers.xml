@@ -1,0 +1,5 @@
+<resources>
+
+    <integer name="app_server_timeout">30</integer>
+
+</resources>

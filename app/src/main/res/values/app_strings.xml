@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">latest</string>
+
+    <string name="app_retry">Retry</string>
+</resources>
