@@ -23,6 +23,7 @@ public abstract class PresenterActivity<V extends ViewModel, P extends Presenter
 
     private P presenter;
 
+    @SuppressWarnings("unchecked")
     protected CP injector(String name) {
         return (CP) getApplication().getSystemService(name);
     }

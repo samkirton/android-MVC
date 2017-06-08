@@ -2,6 +2,8 @@ package com.architecture.latest.presenter.interaction.model;
 
 import com.architecture.latest.presenter.interaction.model.res.StringResData;
 
+import java.util.Objects;
+
 public class ErrorModel {
 
     private final StringResData title;
@@ -18,5 +20,17 @@ public class ErrorModel {
     public ErrorModel(StringResData title, StringResData body) {
         this.title = title;
         this.body = body;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof ErrorModel) {
+            ErrorModel that = (ErrorModel) o;
+
+            return title.equals(that.title)
+                    && body.equals(that.body);
+        } else {
+            return false;
+        }
     }
 }

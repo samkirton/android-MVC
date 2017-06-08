@@ -13,4 +13,15 @@ public class StringResData {
     public StringResData(@StringRes int id) {
         this.id = id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (o instanceof StringResData) {
+            StringResData that = (StringResData) o;
+            return id == that.id;
+        } else {
+            return false;
+        }
+    }
 }
