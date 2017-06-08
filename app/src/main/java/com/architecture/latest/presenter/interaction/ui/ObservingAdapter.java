@@ -1,4 +1,4 @@
-package com.architecture.latest.app.interaction.ui;
+package com.architecture.latest.presenter.interaction.ui;
 
 import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
@@ -16,16 +16,12 @@ public abstract class ObservingAdapter<T, VH extends RecyclerView.ViewHolder>
         return data;
     }
 
-    public interface Ui {
-        void present();
-    }
-
     @Override
     public int getItemCount() {
         return data.size();
     }
 
-    public Observer<List<T>> attachNew(final Ui ui) {
+    public Observer<List<T>> attachNew(final ViewObservable.Ui ui) {
         return new Observer<List<T>>() {
             @Override
             public void onChanged(@Nullable List<T> values) {
@@ -34,12 +30,14 @@ public abstract class ObservingAdapter<T, VH extends RecyclerView.ViewHolder>
                     data.addAll(values);
                 }
 
-                ui.present();
+                if (ui != null) {
+                    ui.present();
+                }
             }
         };
     }
 
-    public Observer<List<T>> attachMore(final Ui ui) {
+    public Observer<List<T>> attachMore(final ViewObservable.Ui ui) {
         return new Observer<List<T>>() {
             @Override
             public void onChanged(@Nullable List<T> values) {
@@ -47,7 +45,9 @@ public abstract class ObservingAdapter<T, VH extends RecyclerView.ViewHolder>
                     data.addAll(values);
                 }
 
-                ui.present();
+                if (ui != null) {
+                    ui.present();
+                }
             }
         };
     }

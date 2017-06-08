@@ -1,4 +1,4 @@
-package com.architecture.latest.app;
+package com.architecture.latest.presenter;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;

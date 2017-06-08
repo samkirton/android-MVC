@@ -1,4 +1,4 @@
-package com.architecture.latest.app.cake;
+package com.architecture.latest.presenter.app.cake;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

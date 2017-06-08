@@ -1,15 +1,15 @@
-package com.architecture.latest.app;
+package com.architecture.latest.presenter;
 
 import android.app.Application;
 
-import com.architecture.latest.app.cake.CakeComponent;
-import com.architecture.latest.app.cake.DaggerCakeComponent;
+import com.architecture.latest.presenter.app.cake.CakeComponent;
+import com.architecture.latest.presenter.app.cake.DaggerCakeComponent;
 import com.architecture.latest.repository.NetworkModule;
 import com.architecture.latest.repository.cake.CakeRepositoryModule;
 import com.architecture.latest.repository.cake.api.CakeApiModule;
 import com.architecture.latest.system.RxModule;
 
-import static com.architecture.latest.app.cake.CakeComponent.CAKE_COMPONENT;
+import static com.architecture.latest.presenter.app.cake.CakeComponent.CAKE_COMPONENT;
 
 public class DefaultApplication extends Application {
 

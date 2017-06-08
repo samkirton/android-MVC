@@ -1,8 +1,10 @@
-package com.architecture.latest.app.cake;
+package com.architecture.latest.presenter.app.cake;
 
 import com.architecture.latest.R;
-import com.architecture.latest.app.Presenter;
-import com.architecture.latest.app.interaction.ViewClick;
+import com.architecture.latest.presenter.Presenter;
+import com.architecture.latest.presenter.interaction.ViewClick;
+import com.architecture.latest.presenter.interaction.model.ErrorModel;
+import com.architecture.latest.presenter.interaction.model.res.StringResData;
 import com.architecture.latest.repository.cake.CakeRepository;
 import com.architecture.latest.system.entity.Cake;
 
@@ -80,8 +82,10 @@ class CakePresenter extends Presenter<CakeViewModel> {
 
         viewModel().showProgress().setValue(false);
 
-        viewModel().errorTitle().setValue("works...!");
-        viewModel().errorBody().setValue("works...!");
+        viewModel().error().setValue(new ErrorModel(
+                new StringResData(R.string.app_error_title_generic),
+                new StringResData(R.string.app_error_body_generic)
+        ));
     }
 
     @Override
@@ -97,7 +101,7 @@ class CakePresenter extends Presenter<CakeViewModel> {
             @Override
             public void accept(@NonNull ViewClick viewClick) {
                 switch (viewClick.id()) {
-                    case R.id.cake_activity_error_retry:
+                    case R.id.inline_error_retry:
                         initialCakes();
                         break;
                 }

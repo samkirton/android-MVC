@@ -1,4 +1,4 @@
-package com.architecture.latest.app.interaction.ui;
+package com.architecture.latest.presenter.interaction.ui;
 
 import android.arch.lifecycle.Observer;
 import android.content.Context;
@@ -22,7 +22,7 @@ public class ObservingProgressBar extends ProgressBar implements ViewObservable<
     }
 
     @Override
-    public Observer<Boolean> attach() {
+    public Observer<Boolean> attach(final Ui ui) {
         return new Observer<Boolean>() {
             @Override
             public void onChanged(@Nullable Boolean inProgress) {
@@ -30,6 +30,10 @@ public class ObservingProgressBar extends ProgressBar implements ViewObservable<
                     setVisibility(View.VISIBLE);
                 } else {
                     setVisibility(View.GONE);
+                }
+
+                if (ui != null)  {
+                    ui.present();
                 }
             }
         };

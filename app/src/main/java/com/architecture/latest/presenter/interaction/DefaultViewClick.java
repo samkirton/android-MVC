@@ -1,4 +1,4 @@
-package com.architecture.latest.app.interaction;
+package com.architecture.latest.presenter.interaction;
 
 public class DefaultViewClick implements ViewClick {
 

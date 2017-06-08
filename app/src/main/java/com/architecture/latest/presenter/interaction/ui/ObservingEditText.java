@@ -1,4 +1,4 @@
-package com.architecture.latest.app.interaction.ui;
+package com.architecture.latest.presenter.interaction.ui;
 
 import android.arch.lifecycle.Observer;
 import android.content.Context;
@@ -21,11 +21,15 @@ public class ObservingEditText extends AppCompatEditText implements ViewObservab
     }
 
     @Override
-    public Observer<String> attach() {
+    public Observer<String> attach(final Ui ui) {
         return new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 setText(s);
+
+                if (ui != null)  {
+                    ui.present();
+                }
             }
         };
     }

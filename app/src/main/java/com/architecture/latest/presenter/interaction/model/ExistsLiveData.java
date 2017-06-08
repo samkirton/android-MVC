@@ -1,4 +1,4 @@
-package com.architecture.latest.app.interaction.model;
+package com.architecture.latest.presenter.interaction.model;
 
 import android.arch.lifecycle.MutableLiveData;
 

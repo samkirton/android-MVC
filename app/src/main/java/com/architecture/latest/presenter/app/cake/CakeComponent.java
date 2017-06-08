@@ -1,6 +1,6 @@
-package com.architecture.latest.app.cake;
+package com.architecture.latest.presenter.app.cake;
 
-import com.architecture.latest.app.PresenterComponent;
+import com.architecture.latest.presenter.PresenterComponent;
 import com.architecture.latest.repository.NetworkModule;
 import com.architecture.latest.repository.cake.CakeRepositoryModule;
 import com.architecture.latest.repository.cake.api.CakeApiModule;

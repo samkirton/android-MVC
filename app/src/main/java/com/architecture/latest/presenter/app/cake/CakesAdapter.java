@@ -1,11 +1,11 @@
-package com.architecture.latest.app.cake;
+package com.architecture.latest.presenter.app.cake;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.architecture.latest.R;
-import com.architecture.latest.app.interaction.ui.ObservingAdapter;
+import com.architecture.latest.presenter.interaction.ui.ObservingAdapter;
 import com.architecture.latest.system.entity.Cake;
 
 class CakesAdapter extends ObservingAdapter<Cake, CakeViewHolder> {

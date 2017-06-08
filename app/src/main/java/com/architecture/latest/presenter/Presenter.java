@@ -1,10 +1,10 @@
-package com.architecture.latest.app;
+package com.architecture.latest.presenter;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-import com.architecture.latest.app.interaction.ViewClick;
+import com.architecture.latest.presenter.interaction.ViewClick;
 
 import io.reactivex.functions.Consumer;
 

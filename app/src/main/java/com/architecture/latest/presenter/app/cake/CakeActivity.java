@@ -1,29 +1,25 @@
-package com.architecture.latest.app.cake;
+package com.architecture.latest.presenter.app.cake;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 
 import com.architecture.latest.R;
-import com.architecture.latest.app.PresenterActivity;
-import com.architecture.latest.app.interaction.ui.ObservingAdapter;
-import com.architecture.latest.app.interaction.ui.ViewObservable;
+import com.architecture.latest.presenter.PresenterActivity;
+import com.architecture.latest.presenter.interaction.ui.FrameErrorView;
+import com.architecture.latest.presenter.interaction.ui.ViewObservable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.architecture.latest.app.cake.CakeComponent.CAKE_COMPONENT;
+import static com.architecture.latest.presenter.app.cake.CakeComponent.CAKE_COMPONENT;
 
 public class CakeActivity extends PresenterActivity<CakeViewModel, CakePresenter, CakeComponent> {
 
-    @BindView(R.id.cake_activity_error_body)
-    ViewObservable<String> errorBody;
-
-    @BindView(R.id.cake_activity_error_retry)
-    Button ctaButton;
+    @BindView(R.id.cake_activity_frame_error)
+    FrameErrorView errorFrame;
 
     @BindView(R.id.cake_activity_recycler_view)
     RecyclerView recyclerView;
@@ -44,17 +40,22 @@ public class CakeActivity extends PresenterActivity<CakeViewModel, CakePresenter
         recyclerView.setAdapter(cakesAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        observeClicks(ctaButton);
+        observeClicks(errorFrame.click());
     }
 
     @Override
     protected void observe(CakeViewModel viewModel) {
         super.observe(viewModel);
 
-        viewModel.errorBody().observe(this, errorBody.attach());
-        viewModel.showProgress().observe(this, progressBar.attach());
+        viewModel.error().observe(this, errorFrame.attach(null));
+        viewModel.showProgress().observe(this, progressBar.attach(new ViewObservable.Ui() {
+            @Override
+            public void present() {
+                errorFrame.setVisibility(View.GONE);
+            }
+        }));
 
-        viewModel.cakes().observe(this, cakesAdapter.attachNew(new ObservingAdapter.Ui() {
+        viewModel.cakes().observe(this, cakesAdapter.attachNew(new ViewObservable.Ui() {
             @Override
             public void present() {
                 recyclerView.setVisibility(View.VISIBLE);

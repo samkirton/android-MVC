@@ -1,4 +1,4 @@
-package com.architecture.latest.app;
+package com.architecture.latest.presenter;
 
 import android.arch.lifecycle.LifecycleActivity;
 import android.arch.lifecycle.ViewModel;
@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.architecture.latest.app.interaction.DefaultViewClick;
-import com.architecture.latest.app.interaction.ViewClick;
+import com.architecture.latest.presenter.interaction.DefaultViewClick;
+import com.architecture.latest.presenter.interaction.ViewClick;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import io.reactivex.ObservableSource;

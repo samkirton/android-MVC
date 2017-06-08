@@ -1,5 +1,10 @@
 <resources>
+
     <string name="app_name">latest</string>
 
-    <string name="app_retry">Retry</string>
+    <string name="app_button_retry">Retry</string>
+
+    <string name="app_error_title_generic">Sorry, something went wrong.</string>
+    <string name="app_error_body_generic">Please try again.</string>
+
 </resources>

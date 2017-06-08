@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="com.architecture.latest.app.DefaultApplication">
+        android:name="com.architecture.latest.presenter.DefaultApplication">
 
-        <activity android:name="com.architecture.latest.app.cake.CakeActivity">
+        <activity android:name=".presenter.app.cake.CakeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
