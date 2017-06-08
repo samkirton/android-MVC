@@ -14,7 +14,7 @@ import dagger.Provides;
 public class CakeRepositoryModule {
 
     @Provides
-    public CakeRepository cakeRepository(CakeApi cakeApi, ConvertTo<List<CakeModel>, List<Cake>> convertTo) {
+    CakeRepository cakeRepository(CakeApi cakeApi, ConvertTo<List<CakeModel>, List<Cake>> convertTo) {
         return new DefaultCakeRepository(cakeApi, convertTo);
     }
 }

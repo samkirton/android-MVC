@@ -1,6 +1,5 @@
 package com.architecture.latest.presenter.interaction.ui;
 
-import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
@@ -24,17 +23,15 @@ public class ObservingTextView extends AppCompatTextView implements ViewObservab
     }
 
     @Override
-    public Observer<StringResData> attach(final Ui ui) {
-        return new Observer<StringResData>() {
+    public ViewObserver<StringResData> attach(final ViewObserver.Ui ui) {
+        return new ViewObserver<StringResData>(ui) {
             @Override
             public void onChanged(@Nullable StringResData s) {
+                super.onChanged(s);
+
                 if (s != null) {
                     setVisibility(View.VISIBLE);
                     setText(getResources().getString(s.id()));
-                }
-
-                if (ui != null)  {
-                    ui.present();
                 }
             }
         };

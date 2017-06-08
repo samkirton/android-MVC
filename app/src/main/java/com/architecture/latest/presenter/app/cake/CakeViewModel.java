@@ -2,9 +2,9 @@ package com.architecture.latest.presenter.app.cake;
 
 import android.arch.lifecycle.MutableLiveData;
 
+import com.architecture.latest.presenter.PresenterViewModel;
 import com.architecture.latest.presenter.interaction.model.ErrorModel;
 import com.architecture.latest.presenter.interaction.model.ExistsLiveData;
-import com.architecture.latest.presenter.PresenterViewModel;
 import com.architecture.latest.system.entity.Cake;
 
 import java.util.List;

@@ -1,6 +1,5 @@
 package com.architecture.latest.presenter.interaction.ui;
 
-import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
@@ -49,20 +48,18 @@ public class FrameErrorView extends FrameLayout implements ViewObservable<ErrorM
     }
 
     @Override
-    public Observer<ErrorModel> attach(final Ui ui) {
-        return new Observer<ErrorModel>() {
+    public ViewObserver<ErrorModel> attach(ViewObserver.Ui ui) {
+        return new ViewObserver<ErrorModel>(ui) {
             @Override
-            public void onChanged(@Nullable ErrorModel model) {
-                if (model != null) {
+            public void onChanged(@Nullable ErrorModel errorModel) {
+                super.onChanged(errorModel);
+
+                if (errorModel != null) {
 
                     setVisibility(View.VISIBLE);
 
-                    titleTextView.setText(getResources().getString(model.title().id()));
-                    bodyTextView.setText(getResources().getString(model.body().id()));
-                }
-
-                if (ui != null) {
-                    ui.present();
+                    titleTextView.setText(getResources().getString(errorModel.title().id()));
+                    bodyTextView.setText(getResources().getString(errorModel.body().id()));
                 }
             }
         };

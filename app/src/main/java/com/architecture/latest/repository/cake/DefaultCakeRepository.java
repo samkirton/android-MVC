@@ -5,7 +5,6 @@ import com.architecture.latest.repository.cake.api.CakeModel;
 import com.architecture.latest.system.entity.Cake;
 import com.architecture.latest.system.entity.convert.ConvertTo;
 
-import java.io.IOException;
 import java.util.List;
 
 import io.reactivex.Single;

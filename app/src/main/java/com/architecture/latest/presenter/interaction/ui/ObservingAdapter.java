@@ -21,32 +21,28 @@ public abstract class ObservingAdapter<T, VH extends RecyclerView.ViewHolder>
         return data.size();
     }
 
-    public Observer<List<T>> attachNew(final ViewObservable.Ui ui) {
-        return new Observer<List<T>>() {
+    public Observer<List<T>> attachNew(final ViewObserver.Ui ui) {
+        return new ViewObserver<List<T>>(ui) {
             @Override
             public void onChanged(@Nullable List<T> values) {
+                super.onChanged(values);
+
                 if (values != null && values.size() > 0) {
                     data.clear();
                     data.addAll(values);
-                }
-
-                if (ui != null) {
-                    ui.present();
                 }
             }
         };
     }
 
-    public Observer<List<T>> attachMore(final ViewObservable.Ui ui) {
-        return new Observer<List<T>>() {
+    public Observer<List<T>> attachMore(final ViewObserver.Ui ui) {
+        return new ViewObserver<List<T>>(ui) {
             @Override
             public void onChanged(@Nullable List<T> values) {
+                super.onChanged(values);
+
                 if (values != null && values.size() > 0) {
                     data.addAll(values);
-                }
-
-                if (ui != null) {
-                    ui.present();
                 }
             }
         };

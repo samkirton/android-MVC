@@ -1,6 +1,5 @@
 package com.architecture.latest.presenter.interaction.ui;
 
-import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatEditText;
@@ -21,15 +20,13 @@ public class ObservingEditText extends AppCompatEditText implements ViewObservab
     }
 
     @Override
-    public Observer<String> attach(final Ui ui) {
-        return new Observer<String>() {
+    public ViewObserver<String> attach(final ViewObserver.Ui ui) {
+        return new ViewObserver<String>(ui) {
             @Override
             public void onChanged(@Nullable String s) {
-                setText(s);
+                super.onChanged(s);
 
-                if (ui != null)  {
-                    ui.present();
-                }
+                setText(s);
             }
         };
     }

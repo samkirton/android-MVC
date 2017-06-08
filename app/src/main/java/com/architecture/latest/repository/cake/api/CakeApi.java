@@ -3,7 +3,6 @@ package com.architecture.latest.repository.cake.api;
 import java.util.List;
 
 import io.reactivex.Single;
-
 import retrofit2.http.GET;
 
 public interface CakeApi {

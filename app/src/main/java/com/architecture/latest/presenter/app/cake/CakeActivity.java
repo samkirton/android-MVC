@@ -10,6 +10,7 @@ import com.architecture.latest.R;
 import com.architecture.latest.presenter.PresenterActivity;
 import com.architecture.latest.presenter.interaction.ui.FrameErrorView;
 import com.architecture.latest.presenter.interaction.ui.ViewObservable;
+import com.architecture.latest.presenter.interaction.ui.ViewObserver;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,14 +49,14 @@ public class CakeActivity extends PresenterActivity<CakeViewModel, CakePresenter
         super.observe(viewModel);
 
         viewModel.error().observe(this, errorFrame.attach(null));
-        viewModel.showProgress().observe(this, progressBar.attach(new ViewObservable.Ui() {
+        viewModel.showProgress().observe(this, progressBar.attach(new ViewObserver.Ui() {
             @Override
             public void present() {
                 errorFrame.setVisibility(View.GONE);
             }
         }));
 
-        viewModel.cakes().observe(this, cakesAdapter.attachNew(new ViewObservable.Ui() {
+        viewModel.cakes().observe(this, cakesAdapter.attachNew(new ViewObserver.Ui() {
             @Override
             public void present() {
                 recyclerView.setVisibility(View.VISIBLE);
