@@ -9,17 +9,17 @@ public abstract class ViewObserver<T> implements Observer<T> {
     private final Ui ui;
 
     public interface Ui {
-        void present();
+        void onChanged();
     }
 
-    ViewObserver(Ui ui) {
+    public ViewObserver(Ui ui) {
         this.ui = ui;
     }
 
     @CallSuper
     public void onChanged(@Nullable T t) {
         if (ui != null) {
-            ui.present();
+            ui.onChanged();
         }
     }
 }

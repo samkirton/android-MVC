@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.memtrip.mvmp.MainActivity">
 
-    <com.memtrip.mvmp.presenter.interaction.ui.ObservingTextView
+    <TextView
         style="@style/Cake.Title.TextAppearance"
         android:id="@+id/inline_error_title"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toTopOf="@+id/inline_error_body"
         tools:text="Oops, Something went wrong!"/>
 
-    <com.memtrip.mvmp.presenter.interaction.ui.ObservingTextView
+    <TextView
         style="@style/Cake.Body.TextAppearance"
         android:id="@+id/inline_error_body"
         android:layout_width="wrap_content"

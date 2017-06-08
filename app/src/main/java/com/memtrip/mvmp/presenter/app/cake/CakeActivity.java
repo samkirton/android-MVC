@@ -1,16 +1,20 @@
 package com.memtrip.mvmp.presenter.app.cake;
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.memtrip.mvmp.R;
 import com.memtrip.mvmp.presenter.PresenterActivity;
+import com.memtrip.mvmp.presenter.interaction.model.ErrorModel;
 import com.memtrip.mvmp.presenter.interaction.ui.FrameErrorView;
-import com.memtrip.mvmp.presenter.interaction.ui.ViewObservable;
-import com.memtrip.mvmp.presenter.interaction.ui.ViewObserver;
+import com.memtrip.mvmp.system.entity.Cake;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +30,7 @@ public class CakeActivity extends PresenterActivity<CakeViewModel, CakePresenter
     RecyclerView recyclerView;
 
     @BindView(R.id.cake_activity_progress_bar)
-    ViewObservable<Boolean> progressBar;
+    ProgressBar progressBar;
 
     private CakesAdapter cakesAdapter;
 
@@ -48,20 +52,30 @@ public class CakeActivity extends PresenterActivity<CakeViewModel, CakePresenter
     protected void observe(CakeViewModel viewModel) {
         super.observe(viewModel);
 
-        viewModel.error().observe(this, errorFrame.attach(null));
-        viewModel.showProgress().observe(this, progressBar.attach(new ViewObserver.Ui() {
+        viewModel.error().observe(this, new Observer<ErrorModel>() {
             @Override
-            public void present() {
-                errorFrame.setVisibility(View.GONE);
+            public void onChanged(@Nullable ErrorModel errorModel) {
+                errorFrame.setVisibility(View.VISIBLE);
+                errorFrame.title().setText(getResources().getString(errorModel.title().id()));
+                errorFrame.body().setText(getResources().getString(errorModel.body().id()));
             }
-        }));
+        });
 
-        viewModel.cakes().observe(this, cakesAdapter.attachNew(new ViewObserver.Ui() {
+        viewModel.showProgress().observe(this, new Observer<Boolean>() {
             @Override
-            public void present() {
-                recyclerView.setVisibility(View.VISIBLE);
+            public void onChanged(@Nullable Boolean showProgress) {
+                errorFrame.setVisibility(View.GONE);
+                progressBar.setVisibility(showProgress ? View.VISIBLE : View.GONE);
             }
-        }));
+        });
+
+        viewModel.cakes().observe(this, new Observer<List<Cake>>() {
+            @Override
+            public void onChanged(@Nullable List<Cake> cakes) {
+                cakesAdapter.setData(cakes);
+                recyclerView.setVisibility(View.VISIBLE);;
+            }
+        });
     }
 
     @Override

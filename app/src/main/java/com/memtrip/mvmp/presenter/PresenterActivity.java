@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.memtrip.mvmp.presenter.interaction.DefaultViewClick;
 import com.memtrip.mvmp.presenter.interaction.ViewClick;
-import com.jakewharton.rxbinding2.view.RxView;
 
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;

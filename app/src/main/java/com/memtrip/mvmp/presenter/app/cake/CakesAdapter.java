@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.memtrip.mvmp.R;
-import com.memtrip.mvmp.presenter.interaction.ui.ObservingAdapter;
+import com.memtrip.mvmp.presenter.interaction.ui.ListAdapter;
 import com.memtrip.mvmp.system.entity.Cake;
 
-class CakesAdapter extends ObservingAdapter<Cake, CakeViewHolder> {
+class CakesAdapter extends ListAdapter<Cake, CakeViewHolder> {
 
     private final LayoutInflater inflater;
 

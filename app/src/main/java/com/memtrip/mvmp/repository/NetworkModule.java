@@ -2,11 +2,11 @@ package com.memtrip.mvmp.repository;
 
 import android.content.Context;
 
-import com.memtrip.mvmp.R;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.memtrip.mvmp.R;
 
 import java.util.concurrent.TimeUnit;
 
