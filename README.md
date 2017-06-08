@@ -22,3 +22,6 @@ The MVMP (Model View Model Presenter) pattern is derived from the MVP pattern, i
        +-------------------------------------------------------------+
 
  ```
+
+ ### Unit testing
+ The behaviour of the ViewModel can be easily tested, please see `com.memtrip.mvmp.presenter.app.cake.CakePresenterTests.java`

@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.architecture.latest.MainActivity">
+    tools:context="com.memtrip.mvmp.MainActivity">
 
-    <com.architecture.latest.presenter.interaction.ui.ObservingTextView
+    <com.memtrip.mvmp.presenter.interaction.ui.ObservingTextView
         style="@style/Cake.Title.TextAppearance"
         android:id="@+id/inline_error_title"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toTopOf="@+id/inline_error_body"
         tools:text="Oops, Something went wrong!"/>
 
-    <com.architecture.latest.presenter.interaction.ui.ObservingTextView
+    <com.memtrip.mvmp.presenter.interaction.ui.ObservingTextView
         style="@style/Cake.Body.TextAppearance"
         android:id="@+id/inline_error_body"
         android:layout_width="wrap_content"

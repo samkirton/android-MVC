@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_medium_12"
-    tools:context="com.architecture.latest.MainActivity">
+    tools:context="com.memtrip.mvmp.MainActivity">
 
     <TextView
         style="@style/Cake.Title.TextAppearance"
