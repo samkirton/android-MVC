@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.memtrip.mvmp.MainActivity">
+    tools:context="com.memtrip.mvc.MainActivity">
 
     <ProgressBar
         android:id="@+id/cake_activity_progress_bar"
@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.memtrip.mvmp.presenter.interaction.ui.FrameErrorView
+    <com.memtrip.mvc.controller.ui.FrameErrorView
         android:id="@+id/cake_activity_frame_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

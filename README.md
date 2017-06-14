@@ -1,27 +1,36 @@
-## MVMP
-The MVMP (Model View Model Presenter) pattern is derived from the MVP pattern, it continues to separate interface logic from how data is represented on the screen. However, Reactive Programming paradigms and `android.arch.lifecycle.ViewModel` allow for the following changes:
+## MVC
+Reactive Programming paradigms and `android.arch.lifecycle.ViewModel` allow for the following changes to MVC on Android:
 
 * UI elements listen to a ViewModel and ONLY update themselves when something changes.
-* Presenters listen for UI interactions and update the ViewModel accordingly.
-* Presenters hold a reference to a ViewModel rather than a View
-* Presenters only ever respond to ui interactions, a UI can not ask the presenter to do something.
+* Controllers listen for UI interactions and update the ViewModel accordingly.
+* Controllers hold a reference to a ViewModel rather than a View
+* Controllers only ever respond to ui interactions, a UI can not ask the controller to do something.
 
 ```
- ----------------                -------------                 -------------
-|                |              |             |               |             |
-|                |              |             |               |             |
-|                |              |             |               |             |
-|                |     Listen   |             |    Emit change|             |
-|    Activity    +------------* |  ViewModel  | <-------------+  Presenter  |
-|                |              |             |               |             |
-|                |              |             |               |             |
-|                |              |             |               |             |
- ------+---------                -------------                 ------+------
-       *                                                             |
-       |                  Listen for ui interactions                 |
-       +-------------------------------------------------------------+
+                                Emit change
+           ----------------------------------------------------
+          |                                                    |
+          |                                                    |
+          |                                                    |
+  --------v--------          ----------------          ----------------
+ |                 |        |                |        |                |
+ |                 |        |                |        |                |
+ |                 |        |                |        |                |
+ |                 |        |                |        |                |
+ |     (Model)     | Listen |     (View)     |        |  (Controller)  |
+ |    ViewModel    *--------|    Activity    |        |                |
+ |                 |        |                |        |                |
+ |                 |        |                |        |                |
+ |                 |        |                |        |                |
+ |                 |        |                |        |                |
+  -----------------          -------*--------          ----------------
+                                    |                          |
+                                    |                          |
+                                    |                          |
+                                     --------------------------
+                                     Listen for UI interactions
 
  ```
 
  ### Unit testing
- The behaviour of the ViewModel can be easily tested, please see `com.memtrip.mvmp.presenter.app.cake.CakePresenterTests.java`
+ The behaviour of the ViewModel can be easily tested, please see `com.memtrip.mvmp.presenter.app.cake.CakeControllerTests.java`
